@@ -1,0 +1,2 @@
+<header><h1 class=\"text-2xl font-bold\">My Application</h1></header>
+<!doctype html><html><head><script src=\"https://cdn.tailwindcss.com\"></script><script>\n    tailwind.config = {\n      theme: {\n        extend: {\n          colors: {\n            clifford: '#da373d',\n          }\n        }\n      }\n    }\n  </script></head><body><h1 class=\"text-3xl font-bold underline text-green-700\">Hello world!</h1></body></html>

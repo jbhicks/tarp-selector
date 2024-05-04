@@ -1,5 +1,5 @@
-module github.com/a-h/templ-examples/hello-world
+module github.com/jbhicks/tarp-selector
 
 go 1.22.2
 
-require github.com/a-h/templ v0.2.663 // indirect
+require github.com/a-h/templ v0.2.663
