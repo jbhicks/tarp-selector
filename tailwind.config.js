@@ -1,12 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./components/**/*"],
-  theme: {
-    extend: {},
+  variants: {
+    extend: {
+      backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+      // Add other variants as needed
+    },
   },
-  plugins: [require("@tailwindcss/typography"), require('daisyui')],
+  plugins: [
+    require('daisyui'),
+    // other plugins...
+  ],
   daisyui: {
-    themes: ["light", "dark"],
+    daisyui: {
+      themes: ["light", "dark", "cupcake", "synthwave", "halloween", "bumblebee", "emerald", "corporate", "lofi", "dracula"],
+    },
   },
 }
 
