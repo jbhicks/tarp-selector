@@ -8,12 +8,12 @@ module.exports = {
     },
   },
   plugins: [
-    require('daisyui'),
-    // other plugins...
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
   ],
   daisyui: {
     daisyui: {
-      themes: ["light", "dark", "cupcake", "synthwave", "halloween", "bumblebee", "emerald", "corporate", "lofi", "dracula"],
+      themes: ["light", "dark"],
     },
   },
 }
