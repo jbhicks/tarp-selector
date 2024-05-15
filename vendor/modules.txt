@@ -1,4 +1,6 @@
-# github.com/a-h/templ v0.2.663
+# github.com/a-h/templ v0.2.680
 ## explicit; go 1.21
 github.com/a-h/templ
 github.com/a-h/templ/safehtml
+# github.com/maragudk/gomponents v0.20.2
+## explicit; go 1.18
