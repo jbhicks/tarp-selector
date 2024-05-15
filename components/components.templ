@@ -18,6 +18,7 @@ templ TarpSelector(name string) {
 					@quantityAndMaterialSelector()
 					@dimensionsSelector()
 					@colorSelector()
+					@edgeFinishingSelector()
 					@footer()
 				</div>
 			</form>
@@ -165,6 +166,31 @@ templ colorSelector() {
 			}
 		});
 	</script>
+}
+
+templ edgeFinishingSelector() {
+	<div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
+		<div class="pl-5">
+			<h2 class="text-base font-semibold leading-7 text-gray-900">Edge Finishing</h2>
+		</div>
+		<div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
+			<div class="sm:col-span-3">
+				<label for="edge_finishing" class="block text-sm font-medium leading-6 text-gray-900">Edge Finishing</label>
+				<div class="mt-2">
+					<select name="edge_finishing" id="edge_finishing" class="input input-bordered w-full" required>
+						<option selected value="">Please Select Edge Finishing</option>
+						<option value="Heat Sealed">Heat Sealed</option>
+						<option value="Hemmed">Hemmed</option>
+						<option value="Hemmed with Grommets">Hemmed with Grommets</option>
+						<option value="Reinforced Hemmed">Reinforced Hemmed</option>
+						<option value="Reinforced Hemmed with Grommets">Reinforced Hemmed with Grommets</option>
+						<option value="Webbing">Webbing</option>
+						<option value="Webbing with Grommets">Webbing with Grommets</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
 }
 
 templ footer() {
