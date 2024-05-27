@@ -89,15 +89,15 @@ templ dimensionsSelector() {
 				<label for="width_major" class="block text-sm font-medium leading-6 text-gray-900">Width</label>
 				<div class="mt-2">
 					<div class="flex">
-						<input type="text" name="width_major" id="width_major" class="input input-bordered input-sm w-full" placeholder="Enter major width"/>
-						<select name="width_major_unit" id="width_major_unit" class="input input-bordered input-sm ml-2">
+						<input type="number" min="1" name="width_major" id="width_major" class="input input-bordered input-sm" placeholder="Enter major width"/>
+						<select name="width_major_unit" id="width_major_unit" class="input input-bordered input-sm ml-2 w-20">
 							<option value="ft">ft</option>
 							<option value="m">m</option>
 						</select>
 					</div>
 					<div class="flex mt-2">
-						<input type="text" name="width_minor" id="width_minor" class="input input-bordered input-sm w-full" placeholder="Enter minor width"/>
-						<select name="width_minor_unit" id="width_minor_unit" class="input input-bordered input-sm ml-2">
+						<input type="number" min="1" name="width_minor" id="width_minor" class="input input-bordered input-sm" placeholder="Enter minor width"/>
+						<select name="width_minor_unit" id="width_minor_unit" class="input input-bordered input-sm ml-2 w-20">
 							<option value="in">in</option>
 							<option value="cm">cm</option>
 						</select>
@@ -108,15 +108,15 @@ templ dimensionsSelector() {
 				<label for="length_major" class="block text-sm font-medium leading-6 text-gray-900">Length</label>
 				<div class="mt-2">
 					<div class="flex">
-						<input type="text" name="length_major" id="length_major" class="input input-bordered input-sm w-full" placeholder="Enter major length"/>
-						<select name="length_major_unit" id="length_major_unit" class="input input-bordered input-sm ml-2">
+						<input type="number" min="1" name="length_major" id="length_major" class="input input-bordered input-sm" placeholder="Enter major length"/>
+						<select name="length_major_unit" id="length_major_unit" class="input input-bordered input-sm ml-2 w-20">
 							<option value="ft">ft</option>
 							<option value="m">m</option>
 						</select>
 					</div>
 					<div class="flex mt-2">
-						<input type="text" name="length_minor" id="length_minor" class="input input-bordered input-sm w-full" placeholder="Enter minor length"/>
-						<select name="length_minor_unit" id="length_minor_unit" class="input input-bordered input-sm ml-2">
+						<input type="number" min="1" name="length_minor" id="length_minor" class="input input-bordered input-sm" placeholder="Enter minor length"/>
+						<select name="length_minor_unit" id="length_minor_unit" class="input input-bordered input-sm ml-2 w-20">
 							<option value="in">in</option>
 							<option value="cm">cm</option>
 						</select>
@@ -168,36 +168,64 @@ templ colorSelector() {
 }
 
 templ edgeFinishingSelector() {
-	<div class="flex flex-col gap-y-10 border-b border-gray-900/10 pb-12">
-		<div class="flex items-start">
-			<div class="pl-5">
-				<h2 class="text-base font-semibold leading-7 text-gray-900">Edge Finishing</h2>
-			</div>
-			<div class="flex flex-col items-center w-full">
+	<div class="flex items-center">
+		<div class="pl-5">
+			<h2 class="text-base font-semibold leading-7 text-gray-900">Edge Finishing</h2>
+		</div>
+		<div class="flex flex-col items-center w-full">
+			<div class="p-6">
+				<div class="mb-4 flex flex-col items-center">
+					<label class="mt-2">
+						<input type="checkbox" id="toggle" class="switch switch-primary" onchange="toggleDropdowns(this.checked)"/>
+						<span class="ml-2">Standard Hems and Grommets</span>
+					</label>
+					<h3 class="text-sm font-semibold text-gray-900 mt-2">Top</h3>
+				</div>
 				<div class="mb-4">
-					<h3 class="text-sm font-semibold leading-7 text-gray-900">Top</h3>
 					@hemAndFastenerSelector()
 				</div>
 				<div class="flex flex-row justify-center gap-x-4 w-full">
 					<div class="w-1/4">
-						<h3 class="text-sm font-semibold leading-7 text-gray-900">Left</h3>
+						<h3 class="text-sm font-semibold text-gray-900">Left</h3>
 						@hemAndFastenerSelector()
 					</div>
-					<div class="flex items-center justify-center w-48 h-48 border-2 border-gray-300">
+					<div class="flex items-center justify-center w-48 h-48 mx-4 border-2 border-gray-300">
 						<span class="text-gray-500">Tarp</span>
 					</div>
 					<div class="w-1/4">
-						<h3 class="text-sm font-semibold leading-7 text-gray-900">Right</h3>
+						<h3 class="text-sm font-semibold text-gray-900">Right</h3>
 						@hemAndFastenerSelector()
 					</div>
 				</div>
-				<div>
+				<div class="mb-4 flex flex-col items-center">
 					<h3 class="text-sm font-semibold leading-7 text-gray-900">Bottom</h3>
 					@hemAndFastenerSelector()
 				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		window.onload = function() {
+			// Select all dropdowns that have 'edge_finishing' or 'edge_fastener' in the name
+			var dropdowns = document.querySelectorAll('select[name*="edge_finishing"], select[name*="edge_fastener"]');
+
+			// Listen for changes on the checkbox
+			var standardHemsAndGrommetsCheckbox = document.getElementById('toggle');
+			standardHemsAndGrommetsCheckbox.addEventListener('change', function() {
+				var isChecked = this.checked;
+				dropdowns.forEach(function(dropdown) {
+					dropdown.disabled = isChecked;
+					if (isChecked) {
+						if (dropdown.name.includes('edge_finishing')) {
+							dropdown.value = 'Folded with webbing';
+						} else {
+							dropdown.value = 'Grommets - #3 with 9/16 inch Hole';
+						}
+					}
+				});
+			});
+		}
+	</script>
 }
 
 templ hemAndFastenerSelector() {
