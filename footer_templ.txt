@@ -1,0 +1,1 @@
+<div class=\"flex items-center justify-between p-12\"><button type=\"button\" class=\"btn text-sm font-semibold leading-6 text-gray-900\">Cancel</button> <button type=\"submit\" class=\"btn btn-primary text-sm font-semibold text-white\">Save</button></div>

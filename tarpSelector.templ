@@ -1,0 +1,27 @@
+package main
+
+templ tarpSelector() {
+	<!DOCTYPE html>
+	<html data-theme="light">
+		<head>
+			<link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css"/>
+			<script src="https://cdn.tailwindcss.com"></script>
+			<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@latest/src/index.min.js"></script>
+			<meta charset="UTF-8"/>
+		</head>
+		<body>
+			<div class="text-center p-5 border-b">
+				<h1 class="text-3xl">Design a Custom Tarp</h1>
+			</div>
+			<form class="pt-5">
+				<div class="space-y-4 p-12">
+					@materialSelector()
+					@dimensionsSelector()
+					@colorSelector()
+					@edgeFinishingSelector()
+					@footer()
+				</div>
+			</form>
+		</body>
+	</html>
+}

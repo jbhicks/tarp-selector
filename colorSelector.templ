@@ -1,0 +1,41 @@
+package main
+
+templ colorSelector() {
+	<div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
+		<div class="pl-5">
+			<h2 class="text-base font-semibold leading-7 text-gray-900">Color</h2>
+		</div>
+		<div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2">
+			<div class="sm:col-span-3">
+				<div class="mt-2 flex items-center">
+					<select name="color" id="color" class="input input-bordered input-sm w-full" required>
+						<option selected value="">Please Select Tarp Color</option>
+						<option value="Black">Black</option>
+						<option value="Blue">Blue</option>
+						<option value="Brown">Brown</option>
+						<option value="Clear">Clear</option>
+						<option value="Gray">Gray</option>
+						<option value="Green">Green</option>
+						<option value="Orange">Orange</option>
+						<option value="Pink">Pink</option>
+						<option value="Purple">Purple</option>
+						<option value="Red">Red</option>
+						<option value="White">White</option>
+						<option value="Yellow">Yellow</option>
+					</select>
+					<div id="color-preview" class="ml-4 w-20 h-20 border border-gray-300"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.getElementById('color').addEventListener('change', function() {
+			var colorPreview = document.getElementById('color-preview');
+			if (this.value === '') {
+				colorPreview.style.backgroundColor = 'transparent';
+			} else {
+				colorPreview.style.backgroundColor = this.value;
+			}
+		});
+	</script>
+}

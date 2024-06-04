@@ -1,3 +1,4 @@
-# tarp-selector
- Tarp Selector prototype
-use 'npm run dev' to initiate dev server
+## Running
+``` bash
+templ generate --watch --proxy="http://localhost:3000" --cmd="go run ."
+```
